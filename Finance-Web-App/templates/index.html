@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/components/tables/ -->
+    <main class="container p-5">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Name</th>
+                    <th>Shares</th>
+                    <th>Price</th>
+                    <th>TOTAL</th>
+                </tr>
+            </thead>
+
+            <tfoot>
+                <tr>
+                    <td colspan="4"></td>
+                    <td>{{ cash_balance | usd }}</td>
+                </tr>
+            </tfoot>
+
+            <tbody>
+
+            {% for stock in stocks %}
+
+                <tr>
+                    <td>{{ stock.symbol.upper() }}</td>
+                    <td>{{ quotes[stock.symbol]["name"] }}</td>
+                    <td>{{ stock.total_shares }}</td>
+                    <td>{{ quotes[stock.symbol]["price"] | usd }}</td>
+                    <td>{{ (quotes[stock.symbol]["price"] * stock.total_shares) | usd }}</td>
+                </tr>
+
+            {% endfor %}
+
+                <tr>
+                    <td colspan="4">CASH</td>
+                    <td>{{ total | usd }}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </main>
+
+
+    <div>
+        <a href="/buy"><button class="btn btn-primary">Buy more</button></a>
+        <a href="/sell"><button class="btn btn-primary">Sell</button></a>
+        <a href="/add"><button class="btn btn-primary">Add cash</button></a>
+    </div>
+
+{% endblock %}

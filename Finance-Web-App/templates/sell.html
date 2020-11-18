@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <form class="needs-validation" novalidate action="/sell" method="post">
+        <div class="form-group">
+            <select class="form-control" name="symbol" required>
+                <option disabled selected value>Symbol</option>
+
+                {% for stock in stocks %}
+                    <option value="{{ stock.symbol }}" data-total-shares="{{ stock.total_shares }}">{{ stock.symbol }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="validateShares"></label>
+            <input autocomplete="off" autofocus id="validateShares" class="form-control" name="shares" placeholder="e.g. 3" type="number" min="1" required />
+            <div class="invalid-feedback">
+                Invalid number.
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Sell</button>
+    </form>
+
+    <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+    </script>
+
+{% endblock %}

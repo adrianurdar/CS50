@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+
+    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+        <div class="row">
+            <div class="col-sm-12 col-md-6"></div>
+            <div class="col-sm-12 col-md-6"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table dataTable no-footer" id="DataTables_Table_0" role="grid">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Symbol</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr class="odd">
+                            <td>{{ quote["name"] }}</td>
+                            <td>{{ quote["price"] | usd }}</td>
+                            <td>{{ quote["symbol"] }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <a href="/buy"><button class="btn btn-primary">Buy</button></a>
+    <a href="/quote"><button class="btn btn-primary">Search again</button></a>
+
+{% endblock %}
