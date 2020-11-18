@@ -3,6 +3,7 @@ All projects from CS50 2019
 
 ## Summary (desc)
 ### Python projects
+* [Finance Web App](https://github.com/adrianurdar/CS50/tree/main/Finance-Web-App)
 * [Bleep](https://github.com/adrianurdar/CS50/tree/main/Bleep)
 * [Caesar Cipher](https://github.com/adrianurdar/CS50/tree/main/Caesar)
 * [Cash](https://github.com/adrianurdar/CS50/tree/main/Cash-Py)
