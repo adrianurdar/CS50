@@ -1,0 +1,2 @@
+# cash-c
+Greedy algorithm
